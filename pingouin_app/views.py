@@ -46,3 +46,18 @@ def resultat_pingouin():
 @app.route('/description_IA_pingouin/', methods = ['GET','POST'])
 def description_ia_pingouin():
     return render_template('description_ia_penguin.html')
+
+
+@app.route('/git/',methods = ['GET','POST'])
+def git():
+    return render_template('aide_memoire_git.html')
+
+@app.route('/flask/',methods = ['GET','POST'])
+def tip_flask():
+    return render_template('aide_memoire_flask.html')
+
+@app.route('/variable_serveur/',methods = ['GET','POST'])
+def tips_variable_systeme():
+    return render_template('aide_memoire_variable_systeme.html')
+
+
