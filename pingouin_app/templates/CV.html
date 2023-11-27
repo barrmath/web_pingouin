@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{%block content %}
+
+<link href="{{ url_for('static', filename='css/style_cv.css') }}" rel="stylesheet">
+
+<div class="wrapper">
+	<div class="image_top">
+		<img src={{ url_for('static', filename='img/CV1.gif') }} width="330" height="279"/>
+		<img src={{ url_for('static', filename='img/CV2.png') }} width="450" height="279"/>	
+		<img src={{ url_for('static', filename='img/CV3.jpg') }} width="450" height="279"/>		
+	</div>	
+
+	<div class="coordonnees" >
+		<p><b>Barrios Mathieu</b></p>
+		<p>27 rue Curie</p>
+		<p>62172 Bouvigny-Boyeffles</p>
+		<p>06 13 64 69 16</p>
+		<p><a href="mailto:mathieu.barrios@outlook.com">mathieu.barrios@outlook.com</a></p>
+		<p><a href="https://www.linkedin.com/in/mathieu-barrios-050ba9263/">LinkedIn</a></p>
+		<p><a href="https://github.com/barrmath/barrmath/tree/main">Github</a></p>
+	</div>
+
+	<div class="competence"><p>
+		<b>Compétence:</b></p>
+		<ul>
+			<li><p><b>Programmation:</b></p>
+			<ul>
+				<li><p>Python</p>
+				<ul>
+					<li><p>Pandas</p>
+					<li><p>Sklearn</p>
+					<li><p>notion Tensorflow</p>
+					<li><p>notion Django</p>
+					<li><p>Flask</p>
+				</ul>
+				<li><p>notion html/CSS</p>
+				<li><p>notion R et Julia</p>
+				<li><p>notion C/C++</p>
+				</ul>
+				<li><p><b>Base de donnée:</b></p>
+				<ul>
+					<li><p>requête SQL</p>
+					<li><p>MariaDB</p>
+					<li><p>SQLlite</p>
+				</ul>
+				<li><p><b>Visualisation:</b></p>
+				<ul>
+					<li><p>Matplotlib, Seaborn</p>
+					<li><p>PowerBi</p>
+					<li><p>Tableau</p>
+				</ul>
+				<li><p><b>Administration:</b></p>
+				<ul>
+					<li><p>Linux et Bash</p>					
+					<ul>
+						<li><p>Debian/Ubuntu</p>
+						<li><p>Slack/Manjaro</p>
+					</ul>
+						<li><p>Windows et Powershell</p>
+						<li><p>Git/Github/Gitlab</p>
+						<li><p>Docker</p>
+						<li><p>Virtualisation</p>
+					<ul>
+							<li><p>HyperV</p>
+							<li><p>VirtualBox</p>
+							<li><p>VMware</p>
+					</ul>
+				</ul>
+				<li><p><b>Méthode:</b></p>
+				<ul>
+					<li><p>Méthode Agile et Cascade</p>
+					<ul>
+						<li><p>Kanban</p>
+						<li><p>Trello</p>
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+	</div>
+
+	<div class="formation">
+		
+		<h1>Administrateur DevOps et Data</h1>
+		<p><br/>
+		<br/>
+		</p>
+		<p id="resume" >Ancien Technicien de Maintenance en reconversion<br>
+		Passionné par l’informatique depuis toujours.</p>
+		
+		<h2>Formation</h2>
+		<p><br/>
+		<br/>
+		</p>
+		<ul>
+			<li><p><b>2023:</b>Formation DevOps chez Studi</p>
+					<ul>
+						<li><p>Automatisation du déploiement d'infrastructure dans le Cloud<p></li>
+						<li><p>Déploiement d'une application en continu<p></li>
+						<li><p>Supervision des services déployés</p></li>
+					</ul>
+			<li><p>
+				<b>2022:</b> Titre Data Analyst chez OpenclassRoom</p>
+				<ul>
+					<li><p>Gestion de Base de données SQL</p></li>
+					<li><p>Création de tableaux de bord avec PowerBI pour voir l’avancement de projets</p></li>
+					<li><p>Analyse de données</p></li>
+				</ul>
+			</li>
+			<li><p><b>2018:</b>Habilitation électrique et CASES 3 et 3B</p></li>
+			<li><p><b>2016:</b> BTS	Maintenance des Systèmes</p>
+				<ul>
+					<li><p>Technique de dépannage et recherche de panne</p></li>
+				</ul>
+			</li>
+			<li><p><b>2016:</b> TOEIC score 715</p></li>
+			<li><p><b>2010:</b> CAP	boulanger</p></li>
+			<li><p><b>2004:</b> DUT GEII (Génie Électrique et Informatique Industriel)</p></li>
+		</ul>
+		</p>
+		<h2>Expérience</h2>
+		<p><br/>
+			<br/>
+		</p>
+		<ul>
+			<li><p><b>Juillet 2017 à Janvier 2022: </b>Technicien de Maintenance chez Recycables groupe Suez</p>
+			<ul>
+				<li><p>utilisation d’une GMAO (Gestion de Maintenance Assisté par Ordinateur)</p>
+				<ul>
+					<li><p>Rapport divers (dépannage, entretien préventif, ronde …)</p></li>
+					<li><p>Mise à jour d’inventaire</p></li>
+				</ul>
+			<li><p>Dépannage et opération préventive de ligne de production</p>
+			</ul>
+			<li><p><b>2014-2015:</b> Technicien de maintenance en interim (Haagens Dazs, Délifrance,	AKEBONO, Ingredia ,Airmat)</p>
+			<ul>
+				<li><p>Mise à jour des GMAO</p>
+				<li><p>Dépannage/entretien de ligne de production</p>
+			</ul>
+			<li><p><b>2011-2014:</b> Boulanger</p>
+			<ul>
+				<li><p>Fabrication du pain en entreprise artisanale</p>
+			</ul>
+				<li><p><b>2005-2011:</b> Technicien itinérant en traitement de eaux chez Apinor</p>
+				<ul>
+					<li><p>Programmation d’automate</p>
+					<li><p>Dépannage des installations et entretien courant</p>
+					<li><p>Analyse chimique par	micromethode</p>
+				</ul>
+					<li><p><b>2004: </b>Technicien Informatique chez Spot Informatique</p>
+					<ul>
+						<li><p>Dépannage logiciel et matériel d’ordinateur</p>
+					</ul>
+				</ul>
+			</ul>
+		</ul>
+	</div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{%block content %}
+
+<link href="{{ url_for('static', filename='css/style_description_pingouin.css') }}" rel="stylesheet">
+
+<h1>Dataset "penguin" et IA</h1>
+<p>
+    Bonjour, le but de cette page est de vous présenter la création d'une petite IA de classification.<br>
+    Premièrement : vous pouvez trouver le notebook servant à faire les IA ici. Les exemples de code ne sont pas forcément issus du notebook.<br>
+    Deuxièmement : les intelligences artificielles font partie de la science des données (data science).<br>
+    Ne vous inquiétez pas, vous n'avez pas besoin de grandes connaissances en probabilité pour comprendre cette présentation.
+    Qui dit science des données dit données.<br>
+    Pour créer une IA il faut donc : construire une IA, lui apprendre des choses (entraînement) et ensuite lui demander une réponse (prédiction)<br>
+    <br>
+    Globalement une IA se comporte comme une sorte d'enfant.<br>
+
+    Exemple:<br> un enfant voit une chose bouger, il demande ce que c'est.<br>
+    <div class="code">IA = sklearn.creationIA()</div><br>
+    C'est un chat lui répondent ses parents<br>
+    L'enfant voit un autre chat plus tard il redemande et ses parents lui redisent c'est un chat.<br>
+    <div class="code">IA.entrainement(image de chat) </div><br>
+    L'enfant croise un troisième chat, il reconnait que c'est un chat.<br>
+    <div class="code">IA.prediction(ce que voit l'enfant) </div><br>
+    Plus tard, l'enfant va au zoo et dit à ses parents: regardez un gros chat en montrant un tigre.<br>
+    <div class="code">IA.prediction(ce que voit l'enfant) </div><br> Ha dommage, l'enfant s'est trompé<br>
+    <br>    
+    Pour créer notre première IA, nous allons procéder par étapes:<br>
+    <ul>
+        <li><a href="#presentation_data">Le dataset pingouin</a></li>
+        <li><a href="#modif_data">Les changements à faire sur le dataset</a></li>
+        <li><a href="#choix_ia">Le choix d'une IA</a></li>
+    </ul>
+</p>
+
+<p id="presentation_data">
+    <h2>Présentation du dataset pingouin</h2>
+    <br>
+    Ce dataset est contenu dans la bibliothèque <a href="https://seaborn.pydata.org/">Seaborn</a> pour python. Il est accessible par la commande python :<br>
+    <div class="code">sns.load_dataset('penguins')</div><br>
+    Il s'agit d'un tableau avec plusieurs caractéristiques des pingouins.
+
+    <table class="pandas">
+        <tr>
+            <td class="pandas"></td><td class="pandas">species</td><td class="pandas">island</td>
+            <td class="pandas">bill_length_mm</td><td  class="pandas">bill_depth_mm</td><td class="pandas">flipper_length_mm</td>
+            <td class="pandas">body_mass_g</td><td class="pandas">sex</td>
+        </tr>
+        <tr>
+            <td class="pandas">0</td><td class="pandas">Adelie</td><td class="pandas">Torgersen</td><td class="pandas">39.1</td><td class="pandas">18.7</td>
+                <td class="pandas">181.0</td><td class="pandas">3750.0</td><td class="pandas">Male</td>
+        </tr>
+        <tr>
+            <td class="pandas">1</td><td class="pandas">Adelie</td><td class="pandas">Torgersen</td><td class="pandas">39.5</td><td class="pandas">17.4</td>
+            <td class="pandas">186.0</td><td class="pandas">3800.0</td><td class="pandas">Female</td>
+        </tr>
+        <tr>
+            <td class="pandas">2</td><td class="pandas">Adelie</td><td class="pandas">Torgersen</td><td class="pandas">40.3</td><td class="pandas">18.0</td>
+            <td class="pandas">195.0</td><td class="pandas">3250.0</td><td class="pandas">Female</td>
+        </tr>
+        <tr>
+            <td class="pandas">3</td><td class="pandas">Adelie</td><td class="pandas">Torgersen</td><td class="NaN">NaN</td><td class="NaN">NaN</td>
+            <td class="NaN">NaN</td><td class="NaN">NaN</td><td class="NaN">NaN</td>
+        </tr>
+        <tr>
+            <td class="pandas">4</td><td class="pandas">Adelie</td><td class="pandas">Torgersen</td><td class="pandas">36.7</td><td class="pandas">19.3</td>
+            <td class="pandas">193.0</td><td class="pandas">3450.0</td><td class="pandas">Female</td>
+        </tr>        
+    </table>
+    <br>
+    On peut voir sur ce tableau des données manquantes ainsi que diverses colonnes<br>
+    <ul>
+        <li>une colonne sans nom : sert d'identifiant</li>
+        <li>species : l'espèce du pingouin</li>
+        <li>island : l'île du pingouin</li>
+        <li>bill_length_mm : la longueur du bec</li>
+        <li>bill_depth_mm : la profondeur du bec (ou la grandeur)</li>
+        <li>flipper_length_mm : la taille des nageoires ou des ailes</li>
+        <li>body_mass_g : le poids du pingouin</li>
+        <li>sex : le sexe du pingouin</li>
+    </ul>
+    <br>
+    Une vue graphique générale du dataset permise par la commande pairplot de seaborn :<br>
+    <div class="code">sns.pairplot(data,hue='sex')</div><br>
+    Et la sortie graphique:<br>
+    <img src={{ url_for('static', filename='/img/pairplot.jpg') }}></img><br>
+    <br>
+    
+    On peut remarquer que :<br>
+    <ul>
+        <li>J'ai remplacé les noms par des chiffres, j'expliquerai pourquoi plus bas.</li>
+        <li>On n'observe pas de groupe mâle ou femelle qui se détacherait clairement</li>
+        <li>par contre on observe une sorte de tendance sur certaines caractéristiques</li>
+    </ul>
+</p>
+
+<p id="modif_data">
+    <h2>Les modifications du dataset pour l'IA</h2>
+    Pour faire les IA, j'ai utilisé la bibliothèque <a href="https://scikit-learn.org/stable/">scikit-learn</a>.<br>
+    Les IA doivent recevoir des données ayant certaines caractéristiques:<br>
+    <ul>
+        <li>Avoir une caractéristique ou dimension par colonnes (par exemple le poids dans une colonne)</li>
+        <li>Un individu ou exemple par ligne (ici un pingouin par ligne)</li>
+        <li>Que des chiffres à regarder (voilà pourquoi le sexe est représenté par un 0 ou 1)</li>
+        <li>pas de valeur manquante ou NaN</li>
+    </ul>
+    Ce n'est pas obligatoire, mais il est bien de normer ou "scaler" ces valeurs.<br>
+    <br>
+    Notre dataset après modification se présente sous cette forme :<br>
+    <img src={{ url_for('static', filename='/img/pairplot_scaler.jpg') }}></img><br>
+    On voit bien que les données ont été normalisées. On peut donc passer à la prochaine étape, entraînement et comparaison des IA.<br>
+</p>
+<p id="choix_ia">
+    <h2>Le choix d'une IA</h2>
+    Ce choix se fait à partir de résultats.<br>
+    La façon la plus simple est de diviser le dataset en 2. Une partie servant à l'entraînement, l'autre au test.<br>
+    <div class="code">
+        from sklearn.model_selection import train_test_split<br>
+        X_train, X_test, y_train, y_test = train_test_split(X, y,)
+    </div><br>
+    Pour tester cette IA on va donc comparer les résultats avec le jeu de test grâce à une matrice de confusion.<br>
+    On va comparer 2 resultats :<br><br>
+    La méthode Kmeans :<br>
+    <img src={{ url_for('static', filename='/img/matrice_kmeans.jpg') }}></img><br>
+    La methode de Regression logistique :<br>
+    <img src={{ url_for('static', filename='/img/matrice_reg_log.jpg') }}></img><br>
+    Petite explication : On va comparer les valeurs de test avec les valeurs prédites par l'IA.<br>
+    On a donc pour le Kmeans :<br>
+    <ul>
+        <li>en haut à gauche les valeurs 0 bien prédites</li>
+        <li>en bas à gauche les valeurs 0 prédites en vrai (faux positif)</li>
+        <li>en haut à droite les valeurs 1 prédites en faux (vrai négatif)</li>
+        <li>en bas à droite les valeurs 1 bien prédites </li>
+    </ul>
+    Une bonne IA va donc avoir un maximun en haut à gauche et en bas à droite.<br>
+    Pour aller plus loin, je vous propose d'aller voir cette 
+    <a href="https://learn.microsoft.com/fr-fr/azure/machine-learning/how-to-understand-automated-ml?view=azureml-api-2">page</a>.<br>
+    Le choix entre les 2 IA est simple ici, les résultats sont en faveur de la regression logistique.<br><br>
+    Pour résumer une IA doit être bien entrainée avec une bonne base de données et il faut la tester. Et même ainsi elle peut encore se tromper.<br>
+    Mais il y a des choses que cette présentation ne dit pas.<br>
+    Nous avons vu ici une IA qui effectue une classification (elle atribue une classe male ou femelle à un pingouin).<br>
+    Il existe d'autres types d'IA pour faire par exemple des regressions (prédire une trajectoire, une vitesse ou un prix de vente)<br>
+    Il y a aussi une grosse différence à cause des données.<br>
+    Ici nos données nous permettent de faire des entrainements supervisés car nous connaissons le sexe des pingouins.<br>
+    Imaginons si nous n'avions pas le sexe des pingouins, comment faire pour deviner leurs sexes?<br>
+    On parle alors d'entrainement supervisé ou non supervisé.<br>
+    
+
+</p>
+{% endblock %}
