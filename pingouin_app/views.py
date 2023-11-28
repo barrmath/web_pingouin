@@ -60,4 +60,6 @@ def tip_flask():
 def tips_variable_systeme():
     return render_template('aide_memoire_variable_systeme.html')
 
-
+@app.route('/liens/',methods = ['GET','POST'])
+def tips_variable_systeme():
+    return render_template('liens_utile.html')
