@@ -4,6 +4,8 @@
 
     <header> <h1>Flask aide memoire</h1></header>
     <body>
+        <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
+
         <p>
         Flask permet à python de générer des pages web.<br>
         Il est recommandé d'utiliser une appproche MVC (Model,View,Control)<br>
@@ -25,9 +27,19 @@
         util.py : en general je mets mes fonctions perso<br>
         <br>
         Le dossier static : permet de stoquer des fichier statique (image, feuille de style)<br>
-        Le dossier templates stocke les pages html<br> 
+        Le dossier templates stocke les pages html<br>
+        <br>
+        Allons parlons un peu de code :
+        le fichier run.py:
+        <div class="code">from pingouin_app import app<br>
+            <br>
+            if __name__ == "__main__":<br>
+                app.run(debug=True)<br>
+        </div>
+        Le fichier sert juste à lancer un serveur local avec la commande python run.py avec l'adresse par defaut.<br>
+        Attention il s'agit d'un server de test de code. Il ne doit pas servir pour lancer un vrai server web. utiliser par exemple Gunicorn pour cela.<br>
+        Remarqué que le mode debug est activé sur ce serveur local. si vous lancer l'application avec gunicorn, il lancera le site avec debug=False.<br>
         
-
         </p>
     </body>
 
