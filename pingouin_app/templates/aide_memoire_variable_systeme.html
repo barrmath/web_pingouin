@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
 {%block content %}
+    <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
 
     <header> <h1>Secret Key et autres variable à cacher</h1></header>
     <body>
         <p>
-        Pour me rappeller la config à mettre en place sur heroku + planquer les clés secretes (token et autre user password) 
+        Il faut cacher des clé des passwords des users. Mais je veux mettre mon code sur Git Alors comment faire?<br>
+        crée un fichier .env et y mettre en clair vos clé. exemple : SECRET_KEY = 1234<br>
+        Conseil: mettre une meilleure clé que 1234<br>
+        Ensuite avec la biliothéque OS vous pouvez demandé une clé dans la variable d'environnement du server.<br>
+        <div class="code">
+            from dotenv import load_dotenv<br>
+            import os<br>
+            <br>
+            load_dotenv()<br>
+            <br>
+            #recup clé secrete dans un fichier .env<br>
+            SECRET_KEY = os.getenv("SECRET_KEY")<br>
+        </div>
+        Il ne vous reste plus qu'à ajouter une variable d'environnemt dans votre serveur.<br>
+        sur Heroku vous le trouverer dans setting reveal config vars
+        <img src={{ url_for('static', filename='img/heroku_conf.png')}}/>
         </p>
     </body>
 
