@@ -2,3 +2,5 @@
 /venv
 /.ipynb_checkpoints
 /__pycache__
+/fonctions/__pycache__
+/pingoin_app/__pycache__
