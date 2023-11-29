@@ -5,7 +5,29 @@
     <header> <h1>Flask aide memoire</h1></header>
     <body>
         <p>
-        Pour me rappeller comment fonctionne Flask
+        Flask permet à python de générer des pages web.<br>
+        Il est recommandé d'utiliser une appproche MVC (Model,View,Control)<br>
+        En général une application est composé de plusieur fichier et dosssier.<br>
+        <img src={{ url_for('static', filename='img/arbo_flask.png') }}/><br>
+        Dans l'arborescence vous apercever un dossier fonction et un notebook qui ne participe pas à Flask.<br>
+        <br>
+        Fichier à la racine :<br>
+        Le fichier run.py : permet de lancer l'application.<br>
+        Le fichier config.py permet de faire la configuration de Flask et éventuellement de sa Base De Donnée(BDD)<br>
+        Le ficiher .env pour des variables d'environnement (genre des clé secrete ou des user/password)<br>
+        Un dossier pour l application ici pingouin_app<br>
+        Un dossier venv pour l'environnement virtuel<br>
+        <br>
+        Les dossiers et fichier de l'application :<br>
+        __ini__.py : fichier python pour initialiser un module.<br>
+        views.py : permet de gerer les routes/vue<br>
+        form.py : ici il s'agit de faire un model pour un formulaire. Vous pouvez trouvé un models.py pour une BDD<br>
+        util.py : en general je mets mes fonctions perso<br>
+        <br>
+        Le dossier static : permet de stoquer des fichier statique (image, feuille de style)<br>
+        Le dossier templates stocke les pages html<br> 
+        
+
         </p>
     </body>
 
