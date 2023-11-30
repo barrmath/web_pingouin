@@ -4,10 +4,16 @@
     <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
     
     <div class="wrapper">
+        <div class="contenu">
         {%block contenu %}{%endblock%}
-    </div>
+        </div>
+    
 
-    <div class="menu">
-        {%block menu%}{%endblock%}
+        <div class="menu">
+            <td><form action={{url_for('tip_flask')}} method="get"><input type="submit"  value="Flask"></form></td>
+            <td><form action={{url_for('git')}} method="get"><input type="submit"  value="Git et Github"></form></td>
+            <td><form action={{url_for('tips_variable_systeme')}} method="get"><input type="submit"  value="Heroku"></form></td>          
+            
+        </div>
     </div>
 {%endblock%}

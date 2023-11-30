@@ -18,6 +18,10 @@ def index():
 def cv():
     return render_template('CV.html')
 
+@app.route('/data/', methods = ['GET','POST'])
+def data():
+    return render_template('data.html')
+
 @app.route('/determination_pingouin/', methods = ['GET','POST'])
 def form_ia_pingouin():
     form = Form_ia_pingouin()
@@ -47,6 +51,10 @@ def resultat_pingouin():
 def description_ia_pingouin():
     return render_template('description_ia_penguin.html')
 
+
+@app.route('/aide_memoire/',methods = ['GET','POST'])
+def aide_memoire():
+    return render_template('aide_memoire.html')
 
 @app.route('/git/',methods = ['GET','POST'])
 def git():

@@ -1,24 +1,20 @@
 div.wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: 1fr 6fr;
     }
 
 div.menu{
     grid-column: 1;
     background-color: aquamarine;
-    border-radius: 5%;
+    grid-row-start: 1;
     }
 
 div.contenu{
     grid-column: 2;
-    background-color: black;
-    color: white;
-    border: solid green;
+    grid-row-start: 1;
     }
 
-div.div.code{
+div.code{
     background-color: black;
     color: white;
     border: solid green;

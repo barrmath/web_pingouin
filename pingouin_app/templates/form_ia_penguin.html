@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base_data.html' %}
 
-{%block content %}
+{%block contenu %}
 <p>
     <form action="{{ url_for("resultat_pingouin") }}" method="POST">
         {{ form.csrf_token }}
