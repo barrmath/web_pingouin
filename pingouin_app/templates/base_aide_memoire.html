@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{%block content %}
+    <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
+    
+    <div class="wrapper">
+        {%block contenu %}{%endblock%}
+    </div>
+
+    <div class="menu">
+        {%block menu%}{%endblock%}
+    </div>
+{%endblock%}
