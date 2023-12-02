@@ -60,6 +60,10 @@ def aide_memoire():
 def git():
     return render_template('aide_memoire_git.html')
 
+@app.route('/docker/',methods = ['GET','POST'])
+def tip_docker():
+    return render_template('aide_memoire_docker.html')
+
 @app.route('/flask/',methods = ['GET','POST'])
 def tip_flask():
     return render_template('aide_memoire_flask.html')
