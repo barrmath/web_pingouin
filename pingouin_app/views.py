@@ -20,12 +20,12 @@ def cv():
 
 @app.route('/data/', methods = ['GET','POST'])
 def data():
-    return render_template('data.html')
+    return render_template('data/data.html')
 
 @app.route('/determination_pingouin/', methods = ['GET','POST'])
 def form_ia_pingouin():
     form = Form_ia_pingouin()
-    return render_template('form_ia_penguin.html',form=form)
+    return render_template('data/form_ia_penguin.html',form=form)
 
 @app.route('/resultat_pingouin/', methods = ['POST'])
 def resultat_pingouin():
@@ -37,7 +37,7 @@ def resultat_pingouin():
     sex_prediction,sex_score = ia_result(specie,bill_length_mm,bill_depth_mm,flipper_length_mm,body_mass_g)
     sex_score = round(sex_score*100,2)
     
-    return render_template('resultat_pingouin.html'
+    return render_template('data/resultat_pingouin.html'
                             ,specie=specie
                             ,bill_length_mm = bill_length_mm
                             ,bill_depth_mm = bill_depth_mm
@@ -49,28 +49,28 @@ def resultat_pingouin():
 
 @app.route('/description_IA_pingouin/', methods = ['GET','POST'])
 def description_ia_pingouin():
-    return render_template('description_ia_penguin.html')
+    return render_template('data/description_ia_penguin.html')
 
 
 @app.route('/aide_memoire/',methods = ['GET','POST'])
 def aide_memoire():
-    return render_template('aide_memoire.html')
+    return render_template('aide_memoire/aide_memoire.html')
 
 @app.route('/git/',methods = ['GET','POST'])
 def git():
-    return render_template('aide_memoire_git.html')
+    return render_template('aide_memoire/aide_memoire_git.html')
 
 @app.route('/docker/',methods = ['GET','POST'])
 def tip_docker():
-    return render_template('aide_memoire_docker.html')
+    return render_template('aide_memoire/aide_memoire_docker.html')
 
 @app.route('/flask/',methods = ['GET','POST'])
 def tip_flask():
-    return render_template('aide_memoire_flask.html')
+    return render_template('aide_memoire/aide_memoire_flask.html')
 
 @app.route('/variable_serveur/',methods = ['GET','POST'])
 def tips_variable_systeme():
-    return render_template('aide_memoire_variable_systeme.html')
+    return render_template('aide_memoire/aide_memoire_variable_systeme.html')
 
 @app.route('/liens/',methods = ['GET','POST'])
 def lien():
