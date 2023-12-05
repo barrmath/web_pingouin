@@ -60,6 +60,10 @@ def aide_memoire():
 def git():
     return render_template('aide_memoire/aide_memoire_git.html')
 
+@app.route('/ansible/',methods = ['GET','POST'])
+def ansible():
+    return render_template('aide_memoire/aide_memoire_ansible.html')
+
 @app.route('/docker/',methods = ['GET','POST'])
 def tip_docker():
     return render_template('aide_memoire/aide_memoire_docker.html')
@@ -71,6 +75,10 @@ def tip_flask():
 @app.route('/variable_serveur/',methods = ['GET','POST'])
 def tips_variable_systeme():
     return render_template('aide_memoire/aide_memoire_variable_systeme.html')
+
+@app.route('/terraform/',methods = ['GET','POST'])
+def terraform():
+    return render_template('aide_memoire/aide_memoire_terraform.html')
 
 @app.route('/liens/',methods = ['GET','POST'])
 def lien():
