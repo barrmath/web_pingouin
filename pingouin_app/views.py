@@ -52,6 +52,14 @@ def description_ia_pingouin():
     return render_template('data/description_ia_penguin.html')
 
 
+@app.route('/python_data/', methods = ['GET','POST'])
+def python_data():
+    return render_template('data/python_data.html')
+
+@app.route('/python_graph/', methods = ['GET','POST'])
+def python_graph():
+    return render_template('data/python_graph.html')
+
 @app.route('/aide_memoire/',methods = ['GET','POST'])
 def aide_memoire():
     return render_template('aide_memoire/aide_memoire.html')
