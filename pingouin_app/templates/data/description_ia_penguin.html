@@ -83,7 +83,7 @@
     Une vue graphique générale du dataset permise par la commande pairplot de seaborn :<br>
     <div class="code">sns.pairplot(data,hue='sex')</div><br>
     Et la sortie graphique:<br>
-    <img src={{ url_for('static', filename='/img/pairplot.jpg') }}></img><br>
+    <img src={{ url_for('static', filename='/img/description_ia_pingouin/pairplot.jpg') }}></img><br>
     <br>
     
     On peut remarquer que :<br>
@@ -107,7 +107,7 @@
     Ce n'est pas obligatoire, mais il est bien de normer ou "scaler" ces valeurs.<br>
     <br>
     Notre dataset après modification se présente sous cette forme :<br>
-    <img src={{ url_for('static', filename='/img/pairplot_scaler.jpg') }}></img><br>
+    <img src={{ url_for('static', filename='/img/description_ia_pingouin/pairplot_scaler.jpg') }}></img><br>
     On voit bien que les données ont été normalisées. On peut donc passer à la prochaine étape, entraînement et comparaison des IA.<br>
 </p>
 <p id="choix_ia">
@@ -121,9 +121,9 @@
     Pour tester cette IA on va donc comparer les résultats avec le jeu de test grâce à une matrice de confusion.<br>
     On va comparer 2 resultats :<br><br>
     La méthode Kmeans :<br>
-    <img src={{ url_for('static', filename='/img/matrice_kmeans.jpg') }}></img><br>
+    <img src={{ url_for('static', filename='/img/description_ia_pingouin/matrice_kmeans.jpg') }}></img><br>
     La methode de Regression logistique :<br>
-    <img src={{ url_for('static', filename='/img/matrice_reg_log.jpg') }}></img><br>
+    <img src={{ url_for('static', filename='/img/description_ia_pingouin/matrice_reg_log.jpg') }}></img><br>
     Petite explication : On va comparer les valeurs de test avec les valeurs prédites par l'IA.<br>
     On a donc pour le Kmeans :<br>
     <ul>
