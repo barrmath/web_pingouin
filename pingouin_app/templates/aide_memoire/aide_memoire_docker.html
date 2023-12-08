@@ -8,10 +8,10 @@
     <div class="code">
         docker run nom_image
     </div>
-    permets de lancer une image docker. Si l'image n'est pas en local, docker va essayer de la télécharger sur docker hub.<br>
+    permet de lancer une image docker. Si l'image n'est pas en local, docker va essayer de la télécharger sur docker hub.<br>
     -it permet d avoir une ligne de commande<br>
-    -d permets de détacher le conteneur et de liberé la ligne de commande<br>
-    -p permets de configurer les ports du docker<br>
+    -d permet de détacher le conteneur et de liberé la ligne de commande<br>
+    -p permet de configurer les ports du docker<br>
     exemple : <br>
     <div class="code">
         docker run -d -p 8080:80 nginx
@@ -55,7 +55,7 @@
     <br>
     <br>
     <h2> Création de docker file : </h2><br>
-    crée un fichier texte et mettre les instructions pour le docker. <br>
+    créez un fichier texte et mettre les instructions pour le docker. <br>
     Exemple de fichier : (merci openclassroom)<br>
     <div class="code">
         # partir de l image debian en version 9<br>
@@ -80,7 +80,7 @@
         #bon l'image docker doit bien faire quelquechose. Mettre ici la commande pour lancer l'app<br>
         CMD npm run start<br>
     </div>
-    Comme sur git on peux ignorer des fichiers grâce au fichier .dockerignore à placer dans le même dosssier que votre dockerfile (oui le .env avec toute vos clé secretes).<br>
+    Comme sur git on peux ignorer des fichiers grâce au fichier .dockerignore. Il est  à placer dans le même dosssier que votre dockerfile (oui le .env avec toute vos clé secretes).<br>
     construire l'image :<br>
     <div class="code">
         docker build -t nom_de_l_image
