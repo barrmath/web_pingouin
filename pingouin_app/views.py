@@ -12,9 +12,8 @@ def create_app():
     #routage des pages web
     @app.route('/', methods = ['GET','POST'])
     @app.route('/index/', methods = ['GET','POST'])
-    def index():
-        message = app.config['MESSAGE_PERSO']        
-        return render_template('index.html',message=message)
+    def index():       
+        return render_template('index.html')
 
     @app.route('/cv/', methods = ['GET','POST'])
     def cv():
