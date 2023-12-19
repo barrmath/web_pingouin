@@ -7,15 +7,14 @@ def create_app():
         
     app = Flask(__name__)
 
-    #si bessoin ajouter les bibliotheque ici
     app.config.from_object('config')
-
 
     #routage des pages web
     @app.route('/', methods = ['GET','POST'])
     @app.route('/index/', methods = ['GET','POST'])
     def index():
-        return render_template('index.html')
+        message = app.config['MESSAGE_PERSO']        
+        return render_template('index.html',message=message)
 
     @app.route('/cv/', methods = ['GET','POST'])
     def cv():
