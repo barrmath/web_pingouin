@@ -5,3 +5,4 @@
 /fonctions/__pycache__
 /pingouin_app/__pycache__
 /tests/__pycache__
+.coverage

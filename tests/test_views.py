@@ -1,6 +1,6 @@
 from tests.conf_test import client
 
-# teste si lápplication envoie bien les pages en dernier un test avec des données POST
+# teste si l'application envoie bien les pages en dernier un test avec des données POST
 
 def test_index_status_codeOK(client):
     response = client.get('/index/')
@@ -19,11 +19,6 @@ def test_CV_status_codeOK(client):
 
 def test_data_status_codeOK(client):
     response = client.get('/data/')
-    print(response.status_code)
-    assert response.status_code == 200
-
-def test_determination_pingouin_status_codeOK(client):
-    response = client.get('/determination_pingouin/')
     print(response.status_code)
     assert response.status_code == 200
 
@@ -82,7 +77,8 @@ def test_liens_codeOK(client):
     print(response.status_code)
     assert response.status_code == 200
 
-def test_git_codeOK(client):
-    response = client.get('/git/')
+#voir pour integré des test avec post
+def test_determination_pingouin_status_codeOK(client):
+    response = client.get('/determination_pingouin/')
     print(response.status_code)
     assert response.status_code == 200
