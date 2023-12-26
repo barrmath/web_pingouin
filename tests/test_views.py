@@ -1,84 +1,129 @@
-from tests.conf_test import client
+from tests.conftest import client
 
-# teste si l'application envoie bien les pages en dernier un test avec des données POST
+# teste si l'application envoie bien les pages avec la requete get
 
-def test_index_status_codeOK(client):
+def test_index_get_status_codeOK(client):
     response = client.get('/index/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_origin_status_codeOK(client):
+def test_origin_get_status_codeOK(client):
     response = client.get('/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_CV_status_codeOK(client):
+def test_CV_get_status_codeOK(client):
     response = client.get('/cv/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_data_status_codeOK(client):
+def test_data_get_status_codeOK(client):
     response = client.get('/data/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_description_IA_pingouin_status_codeOK(client):
+def test_description_IA_pingouin_get_status_codeOK(client):
     response = client.get('/description_IA_pingouin/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_python_data_status_codeOK(client):
+def test_python_data_get_status_codeOK(client):
     response = client.get('/python_data/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_python_graph_codeOK(client):
+def test_python_graph_get_status_codeOK(client):
     response = client.get('/python_graph/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_aide_memoire_codeOK(client):
+def test_aide_memoire_get_status_codeOK(client):
     response = client.get('/aide_memoire/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_git_codeOK(client):
+def test_git_get_status_codeOK(client):
     response = client.get('/git/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_ansible_codeOK(client):
+def test_ansible_get_status_codeOK(client):
     response = client.get('/ansible/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_docker_codeOK(client):
+def test_docker_get_status_codeOK(client):
     response = client.get('/docker/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_flask_codeOK(client):
+def test_flask_get_status_codeOK(client):
     response = client.get('/flask/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_variable_serveur_codeOK(client):
+def test_variable_serveur_get_status_codeOK(client):
     response = client.get('/variable_serveur/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_terraform_codeOK(client):
+def test_terraform_get_status_codeOK(client):
     response = client.get('/terraform/')
-    print(response.status_code)
     assert response.status_code == 200
 
-def test_liens_codeOK(client):
+def test_liens_get_status_codeOK(client):
     response = client.get('/liens/')
-    print(response.status_code)
+    assert response.status_code == 200
+
+###test avec la requete POST
+def test_index_post_status_codeOK(client):
+    response = client.post('/index/')
+    assert response.status_code == 200
+
+def test_origin_post_status_codeOK(client):
+    response = client.post('/')
+    assert response.status_code == 200
+
+def test_CV_post_status_codeOK(client):
+    response = client.post('/cv/')
+    assert response.status_code == 200
+
+def test_data_post_status_codeOK(client):
+    response = client.post('/data/')
+    assert response.status_code == 200
+
+def test_description_IA_pingouin_post_status_codeOK(client):
+    response = client.post('/description_IA_pingouin/')
+    assert response.status_code == 200
+
+def test_python_data_post_status_codeOK(client):
+    response = client.post('/python_data/')
+    assert response.status_code == 200
+
+def test_python_graph_post_status_codeOK(client):
+    response = client.post('/python_graph/')
+    assert response.status_code == 200
+
+def test_aide_memoire_post_status_codeOK(client):
+    response = client.post('/aide_memoire/')
+    assert response.status_code == 200
+
+def test_git_post_status_codeOK(client):
+    response = client.post('/git/')
+    assert response.status_code == 200
+
+def test_ansible_post_status_codeOK(client):
+    response = client.post('/ansible/')
+    assert response.status_code == 200
+
+def test_docker_post_status_codeOK(client):
+    response = client.post('/docker/')
+    assert response.status_code == 200
+
+def test_flask_post_status_codeOK(client):
+    response = client.post('/flask/')
+    assert response.status_code == 200
+
+def test_variable_serveur_post_status_codeOK(client):
+    response = client.post('/variable_serveur/')
+    assert response.status_code == 200
+
+def test_terraform_post_status_codeOK(client):
+    response = client.post('/terraform/')
+    assert response.status_code == 200
+
+def test_liens_post_status_codeOK(client):
+    response = client.post('/liens/')
     assert response.status_code == 200
 
 #voir pour integré des test avec post
 def test_determination_pingouin_status_codeOK(client):
-    response = client.get('/determination_pingouin/')
-    print(response.status_code)
+    response = client.post('/determination_pingouin/')
     assert response.status_code == 200

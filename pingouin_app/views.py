@@ -84,6 +84,10 @@ def tips_variable_systeme():
 def terraform():
     return render_template('aide_memoire/aide_memoire_terraform.html')
 
+@app.route('/aws_cdk/', methods = ['GET','POST'])
+def aws_cdk():
+    return render_template('aide_memoire/aide_memoire_aws_cdk.html')
+
 @app.route('/liens/',methods = ['GET','POST'])
 def lien():
     return render_template('liens_utile.html')
