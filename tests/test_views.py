@@ -123,7 +123,13 @@ def test_liens_post_status_codeOK(client):
     response = client.post('/liens/')
     assert response.status_code == 200
 
-#voir pour integré des test avec post
+#voir pour integrer des test avec post
 def test_determination_pingouin_status_codeOK(client):
-    response = client.post('/determination_pingouin/')
-    assert response.status_code == 200
+    with client:
+        response = client.post("/resultat_pingouin/",data={
+            'specie' : 'Gentoo',
+            'bill_length_mm' : 40,
+            'bill_depth_mm' : 17,
+            'flipper_length_mm' : 200,
+            'body_mass_g' : 4500})   
+        assert response.status_code == 200
