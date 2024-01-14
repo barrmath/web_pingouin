@@ -5,6 +5,48 @@ m{% extends 'aide_memoire/base_aide_memoire.html' %}
     <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
     <h1>Aide Mémoire terraform</h1>
     <p>
-        En cours
+        On crée un fichier main.tf avec les ressources nécéssaires : <br>
+        par exemple : <br>
+        <div class="code">
+            terraform {<br>
+                &ensp;    required_providers {<br>
+                &ensp;    &ensp;      aws = {<br>
+                &ensp;    &ensp;  &ensp;source  = "hashicorp/aws"<br>
+                &ensp;    &ensp;  &ensp;version = "~> 4.16"<br>
+                &ensp;    &ensp;}<br>
+                &ensp;}<br>
+              <br>
+              &ensp;  required_version = ">= 1.2.0"<br>
+              &ensp; }<br>
+              <br>
+              &ensp;  provider "aws" {<br>
+                &ensp;  &ensp;  region  = "us-west-2"<br>
+                &ensp;}<br>
+              <br>
+              &ensp;resource "aws_instance" "app_server" {<br>
+                &ensp;&ensp;  ami           = "ami-830c94e3"<br>
+                &ensp;&ensp;  instance_type = "t2.micro"<br>
+                <br>
+                &ensp;&ensp;   tags = {<br>
+                &ensp;&ensp;  Name = "ExampleAppServerInstance"<br>
+                &ensp;}<br>
+              }<br>
+        </div>              
+        On décrie ici le provider aws  avec l ami que l on veux la region et le type d'instance. <br>
+        <br>
+        On initialise terraform avec la commande : <br>
+        <div class="code">
+            terraform init
+        </div>
+        <br>
+        On peux ensuite appliqué (avec cet exemple sur aws) :<br>
+        <div class="code">
+            terraform apply
+        </div>
+        <br>
+        On peux detruire ces instances avec la commande : <br>
+        <div class="code">
+            terraform destroy
+        </div>
     </p>
 {%endblock%}
