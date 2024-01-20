@@ -2,9 +2,44 @@
 
 {%block contenu %}
 
-    <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
-    <h1>Aide Mémoire Ansible</h1>
-    <p>
-        En Cours
-    </p>
+<link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
+<h1>Aide Mémoire Ansible</h1>
+<p>
+    Ansible : vous permets déxecuter sur un ou plusieurs ordinateur distant des commandes.<br>
+    par exemple des apt-get pour installer divers logiciels.<br>
+    <br>
+    On a pas besoin d'installer Ansible sur les ordinateurs distants. Il faut juste un ordinateur avec ansible
+    d'installé.<br>
+    Premiére étape : inventoriez les ordinateurs ou servers à automatiser.<br>
+    crée un fichier .ini par exemple inventaire.ini avec les nom des configs
+    par exemple :
+<div class='code'>
+    fedoraBDD<br>
+    fedoraweb
+</div><br>
+Il faut ensuite modifier le fichier /etc/host pour ajouter les lien entre les nom et les adresses IP.<br>
+Par exemple :<br>
+<div class="code">
+    #pour faire des test avec ansible et des VMs<br>
+    0192.168.1.141 fedoraBDD<br>
+    192.168.1.140 fedoraweb <br>
+</div>
+Vous pouvez verifier si vos serveurs repondent à ansible avec la commande ping :<br>
+<div class="code">
+    ansible -i inventaire.ini -m ping --user tux --ask-pass all
+</div>
+Si la commande marche pas : il faut peut être sur le serveur ansible ssh et ssh_pass pour permettre à ansible de
+fonctionner<br>
+<br>
+Bon le ssh avec un mots de passe il parait que c'est pas assez sécurisé. Donc on va passé par un jeux de clé publique.
+Génération de clé avec la commande ssh :<br>
+<div class="code">
+    ssh-keygen -t ecdsa
+</div>
+Puis mise en place des clés pour les hosts:<br>
+<div class="code">
+    ansible -i inventaire.ini  -m authorized_key -a 'user=tux state=present key="&#123&#123lookup("file", "/home/tux/.ssh/id_ecdsa.pub") &#125&#125"' --user tux --ask-pass --become --ask-become-pass all
+</div>
+Maintenant, il faut configurer les roles et les appliqué aux bon serveurs.
+</p>
 {%endblock%}
