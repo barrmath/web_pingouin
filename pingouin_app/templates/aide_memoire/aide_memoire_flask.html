@@ -1,10 +1,9 @@
 {% extends 'aide_memoire/base_aide_memoire.html' %}
 
-{%block contenu %}
+{% block contenu %}
 
-    <header> <h1>Flask aide memoire</h1></header>
-    <body>
-        <p>
+    <h1>Flask aide memoire</h1>
+    <p>
         Flask permet à python de générer des pages web.<br>
         Il est recommandé d'utiliser une appproche MVC (Model,View,Control)<br>
         En général une application est composé de plusieur fichier et dosssier.<br>
@@ -78,7 +77,6 @@
             form = Form_ia_pingouin()<br>
             return render_template('form_ia_penguin.html',form=form)<br>
         </div>
-        </p>
-    </body>
+    </p>
 
 {% endblock %}

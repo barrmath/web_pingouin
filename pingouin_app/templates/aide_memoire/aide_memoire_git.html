@@ -1,13 +1,13 @@
 {% extends 'aide_memoire/base_aide_memoire.html' %}
 
-{%block contenu %}
+{% block contenu %}
 
     <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
 
     <header> <h1>Aide memoire git</h1></header>
     <body>
         <p>
-        Rappel des commande de base de Git<br>
+        Rappel des commandes de base de Git<br>
         initialisation du repertoire local : <br>
         <div class="code">git init -b main</div> <br>
         init : crée un repertoire .git avec le depot local de git<br>
@@ -28,7 +28,7 @@
         <br>
         <br>
         commiter le code :<br>
-        <div class-"code">git commit -am "commentaire du commit"</div>
+        <div class="code">git commit -am "commentaire du commit"</div>
         <br>
         <br>
         créer une branche :<br>
