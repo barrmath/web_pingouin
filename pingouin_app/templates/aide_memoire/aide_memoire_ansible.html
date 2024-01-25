@@ -40,6 +40,58 @@ Puis mise en place des clés pour les hosts:<br>
 <div class="code">
     ansible -i inventaire.ini  -m authorized_key -a 'user=tux state=present key="&#123&#123lookup("file", "/home/tux/.ssh/id_ecdsa.pub") &#125&#125"' --user tux --ask-pass --become --ask-become-pass all
 </div>
-Maintenant, il faut configurer les roles et les appliqué aux bon serveurs.
+Maintenant, il faut configurer les roles et les appliqué aux bon serveurs.<br>
+<br>
+Un rôle est une serie d'intruction pour arriver à faire une choses : par exemple installer apache.<br>
+Ce role peut être repris plusieur fois si on dois par exemple installer apache sur plusieur machine<br>
+On va mettre les rôles dans un repertoire roles.(dossier par defaut de ansbile)<br>
+Une fois dans le dossier roles on peut initier une arborescence avec la commande : <br>
+<div class="code">
+    ansible-galaxy init nom_du_role
+</div>
+exemple de repertoire :<br>
+<br>
+roles<br>
+├── apache<br>
+│   ├── handlers<br>
+│   │   └── main.yml<br>
+│   └── tasks<br>
+│       ├── main.yml<br>
+│       └── php-install.yml<br>
+├── mariadb<br>
+│   └── tasks<br>
+│       └── main.yml<br>
+<br>
+ici on a 2 rôles apache et mariadb. Mairiadb est le rôle le plus simple : il n y a que des taches (tasks).<br>
+Apache est plus complexe avec une tache principale main.yml et une autre as inclure php-install.yml.<br>
+Dans le dossier apache on peut aussi voir un dossier handler qui gere le redemarrage de apache en cas de changement.<br>
+<br>
+exemple de fichier role:<br>
+<div class="code">
+    ---<br>
+    <br>
+#1. Cette tâche permet d’installer Apache (httpd) à l’aide du module apt<br>
+- name: "apache installation"<br>
+&ensp;  yum:<br>
+&ensp; &ensp;    name: "httpd"<br>
+&ensp; &ensp;    state: "present"<br>
+    <br>
+#2. Cette tâche active le service Apache<br>
+- name: "apache service activation"<br>
+&ensp;  service:<br>
+&ensp;    name: "httpd"<br>
+&ensp;    state: "started"<br>
+&ensp;    enabled: yes<br>
+    <br>
+#3. Cette tâche fait appel à un autre fichier de configuration pour installer PHP. Elle est exécutée uniquement si la variable php_install est à vraie (par défaut, elle est à faux)<br>
+- name: "install php packages"<br>
+&ensp;  include_tasks: "php-install.yml"<br>
+&ensp;  when: php_install|default(False)|bool<br>
+</div>
+<br>
+L'indexation est important comme en python.<br>
+L'indexation se fait avec 2 expaces.<br> 
+Le fichier débute par ---.<br>
+
 </p>
 {%endblock%}
