@@ -1,8 +1,9 @@
-m{% extends 'aide_memoire/base_aide_memoire.html' %}
+{% extends 'aide_memoire/base_aide_memoire.html' %}
 
-{%block contenu %}
+{% block contenu %}
 
     <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
+
     <h1>Aide Mémoire terraform</h1>
     <p>
         On crée un fichier main.tf avec les ressources nécéssaires : <br>
@@ -49,4 +50,5 @@ m{% extends 'aide_memoire/base_aide_memoire.html' %}
             terraform destroy
         </div>
     </p>
-{%endblock%}
+
+{% endblock %}
