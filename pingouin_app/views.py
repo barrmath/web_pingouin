@@ -1,5 +1,5 @@
-# import bibliotheque flask et création application flask
-from flask import Flask, render_template, url_for, request, current_app
+# import bibliothèque flask et création application flask
+from flask import render_template, request, current_app
 from .form import Form_ia_pingouin
 from .util import ia_result
 
