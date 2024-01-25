@@ -62,7 +62,7 @@ roles<br>
 │   └── tasks<br>
 │       └── main.yml<br>
 <br>
-ici on a 2 rôles apache et mariadb. Mairiadb est le rôle le plus simple : il n y a que des taches (tasks).<br>
+Ici on a 2 rôles apache et mariadb. Mairiadb est le rôle le plus simple : il n y a que des taches (tasks).<br>
 Apache est plus complexe avec une tache principale main.yml et une autre as inclure php-install.yml.<br>
 Dans le dossier apache on peut aussi voir un dossier handler qui gere le redemarrage de apache en cas de changement.<br>
 <br>
@@ -92,6 +92,36 @@ exemple de fichier role:<br>
 L'indexation est important comme en python.<br>
 L'indexation se fait avec 2 expaces.<br> 
 Le fichier débute par ---.<br>
-
+<br>
+Nous avons donc :<br>
+Des machine dans inventaire.ini<br>
+Différents roles dans le dossier roles<br>
+<br>
+Il reste plus qu'à associer les roles et les machines.<br>
+C'est le boulot du fichier playbook de ansible.<br>
+fichier playbook Install_apache.yml:<br>
+<div class="code">
+    ---<br>
+    - name: install apache<br>
+    &ensp; hosts : fedoraweb
+    &ensp; role: "apache"
+    &ensp; php_install:yes
+</div>
+On nomme l'opération avec name puis on definie l'operation (attention: indexation 2 espaces).<br>
+La sous-section host indique les machines sur lesquels appliqué le role.<br>
+La sous-section role indique le role à appliquer.<br>
+Le php_install est une variable utilisée par le role pour savoir si on veux installer php.<br>
+<br>
+Maintenant la commande pour lancer le tout :
+<div class="code">
+    ansible-playbook -i inventaire.ini user user-ansible --become --ask-become-pass install-apache.yml
+</div>
+Alors ansible-playbook : lance un playbook<br>
+-i inventaire.ini: permet de charger le fichier inventaire<br>
+user user_ansible : permet de définir le nom d'utilisateur sur les machines distantes<br>
+--become _ask-become_pass : on passe "en root" avec sudo et on demande le mot de passe<br>
+install-apache.yml : le nom du playbook<br>
+<br>
+Normalement les machines devraient executer les ordres de ansibles. 
 </p>
 {%endblock%}
