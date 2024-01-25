@@ -142,11 +142,13 @@ def determination_cluster(df, nb_cluster, col_cluster="cluster"):
 
 
 def dentogramme(
-    df, methode="ward", nb_branche=10, taille=(12, 8), nom_colonne_cluster="cluster"
+        df, methode="ward", nb_branche=10, taille=(12, 8), nom_colonne_cluster="cluster"
 ):
     """
     Dessine un dentogramme et rajoute un colonne avec les cluster trouvés.
-    SRC : https://openclassrooms.com/fr/courses/4525281-realisez-une-analyse-exploratoire-de-donnees/5177936-effectuez-une-classification-hierarchique
+    SRC : https://openclassrooms.com/fr/courses/4525281-realisez-une-
+    analyse-exploratoire-de-donnees/5177936-effectuez
+    -une-classification-hierarchique
     parameter :
         df: dataframe à analyser
         methode : methode voulue default WARD
@@ -239,7 +241,7 @@ def kmeans_bool(data_train, target_train, data_test, target_test, ax):
 
 
 def KNNtest(
-    data_train, target_train, data_test, target_test, ax, ax_knn, kmin=1, kmax=10
+        data_train, target_train, data_test, target_test, ax, ax_knn, kmin=1, kmax=10
 ):
     """renvoie un modele KNN
     arg: data , dataframe a analyser
@@ -266,8 +268,8 @@ def KNNtest(
     ax_knn.set_ylabel("score")
 
     courbe_apprentissage["ecart"] = (
-        courbe_apprentissage["score_train"].abs()
-        - courbe_apprentissage["score_test"].abs()
+            courbe_apprentissage["score_train"].abs()
+            - courbe_apprentissage["score_test"].abs()
     )
     nb_voisin = courbe_apprentissage["ecart"].idxmin()
     print("Le nombre de voisins choisi automatiquement est de :", nb_voisin)
@@ -296,7 +298,7 @@ def KNNtest(
 
 
 def regression_logistique(
-    data_train, target_train, data_test, target_test, ax, max_iter=100
+        data_train, target_train, data_test, target_test, ax, max_iter=100
 ):
     """
     renvoie un modele de regression logistique sklearn

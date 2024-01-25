@@ -1,5 +1,3 @@
-from tests.conftest import client
-
 # teste si l'application envoie bien les pages avec la requete get
 
 
@@ -78,7 +76,7 @@ def test_liens_get_status_codeOK(client):
     assert response.status_code == 200
 
 
-###test avec la requete POST
+# test avec la requete POST
 def test_index_post_status_codeOK(client):
     response = client.post("/index/")
     assert response.status_code == 200
@@ -154,7 +152,7 @@ def test_liens_post_status_codeOK(client):
     assert response.status_code == 200
 
 
-# voir pour integrer des test avec post
+# voir pour integrer des tests avec post
 def test_determination_pingouin_status_codeOK(client):
     with client:
         response = client.post(
