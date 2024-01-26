@@ -46,6 +46,11 @@ def test_git_get_status_codeOK(client):
     assert response.status_code == 200
 
 
+def test_git_action_get_status_codeOK(client):
+    response = client.get("/git_action/")
+    assert response.status_code == 200
+
+
 def test_ansible_get_status_codeOK(client):
     response = client.get("/ansible/")
     assert response.status_code == 200
@@ -119,6 +124,10 @@ def test_aide_memoire_post_status_codeOK(client):
 
 def test_git_post_status_codeOK(client):
     response = client.post("/git/")
+    assert response.status_code == 200
+
+def test_git_action_post_status_codeOK(client):
+    response = client.post("/git_action/")
     assert response.status_code == 200
 
 
