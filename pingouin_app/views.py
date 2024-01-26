@@ -76,9 +76,11 @@ def aide_memoire():
 def git():
     return render_template("aide_memoire/aide_memoire_git.html")
 
+
 @app.route("/git_action/", methods=["GET", "POST"])
 def git_action():
     return render_template("aide_memoire/aide_memoire_git_action.html")
+
 
 @app.route("/ansible/", methods=["GET", "POST"])
 def ansible():
