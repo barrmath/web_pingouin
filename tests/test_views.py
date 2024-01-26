@@ -126,6 +126,7 @@ def test_git_post_status_codeOK(client):
     response = client.post("/git/")
     assert response.status_code == 200
 
+
 def test_git_action_post_status_codeOK(client):
     response = client.post("/git_action/")
     assert response.status_code == 200
