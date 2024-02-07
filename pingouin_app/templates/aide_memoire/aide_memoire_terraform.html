@@ -59,7 +59,7 @@
                 output var.region
               }<br>
         </div>              
-        On décrie ici le provider aws  avec l ami que l on veux la region et le type d'instance. <br>
+        On décrie ici le provider aws  avec l'AMI que l'on veux, la region et le type d'instance. <br>
         <br>
         Si besoin la commmande output peux vous servir à faire sortir une variable (comme print ou echo).<br>
         <br>
@@ -87,6 +87,23 @@
         <div class="code">
             terraform destroy
         </div>
+        <br>
+        Pour mieux diviser son code vous pouvez par exemple mettre les providers dans un fichier providers.tf .<br>
+        On peux créer aussi un fichier prod.tfvars pour y mettre les variables. Un peu comme un .env en python.<br>
+        exemple : <br>
+        <div class="code">
+            ma_variable = "machainedecaractere"
+        </div>
+        Si vous y mettez des données sensibles, evitez de partager le code. Ajouter le fichier au .gitignore .<br>
+        terraform output vous permets de recupérer vos outputs.<br>
+        l'option -raw permets d'enlevé les guillemets.<br>
+        l'option -json permets de faire un format json<br>
+        <div class="code">
+            terraform output -raw<br>
+            terraform outpu -json<br>
+        </div>
+        <br>
+
     </p>
 
 {% endblock %}
