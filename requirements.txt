@@ -16,6 +16,7 @@ numpy
 packaging
 pandas
 Pillow
+pyarrow
 pyparsing
 python-dateutil
 python-dotenv

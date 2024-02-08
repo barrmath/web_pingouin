@@ -6,19 +6,15 @@ from flask import url_for
 def ia_result(specie, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g):
     # renvoie le sex predit par une methode IA
 
-    # IA_test = joblib.load('static/model_IA/reg_log_pingouin.pkl')
     IA_test = joblib.load(
         "pingouin_app" + url_for("static", filename="model_IA/reg_log_pingouin.pkl")
     )
-    # scaler = joblib.load('static/model_IA/label/scaler.pkl')
     scaler = joblib.load(
         "pingouin_app" + url_for("static", filename="model_IA/label/scaler.pkl")
     )
-    # label_sex = joblib.load('static/model_IA/label/label_sex.pkl')
     label_sex = joblib.load(
         "pingouin_app" + url_for("static", filename="model_IA/label/label_sex.pkl")
     )
-    # label_specie = joblib.load('static/model_IA/label/label_species.pkl')
     label_specie = joblib.load(
         "pingouin_app" + url_for("static", filename="model_IA/label/label_species.pkl")
     )
