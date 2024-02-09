@@ -81,9 +81,9 @@
         CMD npm run start<br>
     </div>
     Comme sur git on peux ignorer des fichiers grâce au fichier .dockerignore. Il est  à placer dans le même dosssier que votre dockerfile (oui le .env avec toute vos clé secretes).<br>
-    construire l'image :<br>
+    construire l'image (Ne pas oublier le point pour indiquer le dossier courant) :<br>
     <div class="code">
-        docker build -t nom_de_l_image
+        docker build -t nom_de_l_image .
     </div>
     Pour mettre l'image sur le docker hub (il vous faut un compte), il faut tagger l'image puis l'envoyer.
     <div class="code">
