@@ -5,11 +5,11 @@
 <link href="{{ url_for('static', filename='css/style_aide.css') }}" rel="stylesheet">
 <h1>Aide Mémoire Ansible</h1>
 <p>
-    Ansible : vous permets déxecuter sur un ou plusieurs ordinateur distant des commandes.<br>
-    par exemple des apt-get pour installer divers logiciels.<br>
+    Ansible : vous permet d'éxecuter sur un ou plusieurs ordinateurs distants des commandes.<br>
+    Par exemple des apt-get pour installer divers logiciels.<br>
     <br>
-    On a pas besoin d'installer Ansible sur les ordinateurs distants. Il faut juste un ordinateur avec ansible
-    d'installé.<br>
+    On a pas besoin d'installer Ansible sur les ordinateurs distants. Il faut juste un ordinateur avec Ansible
+    installé.<br>
     Premiére étape : inventoriez les ordinateurs ou servers à automatiser.<br>
     crée un fichier .ini par exemple inventaire.ini avec les nom des configs
     par exemple :
@@ -24,14 +24,14 @@
         0192.168.1.141 fedoraBDD<br>
         192.168.1.140 fedoraweb <br>
     </div>
-    Vous pouvez verifier si vos serveurs repondent à ansible avec la commande ping :<br>
+    Vous pouvez vérifier si vos serveurs répondent à Ansible avec la commande ping :<br>
     <div class="code">
         ansible -i inventaire.ini -m ping --user tux --ask-pass all
     </div>
-    Si la commande marche pas : il faut peut être sur le serveur ansible ssh et ssh_pass pour permettre à ansible de
+    Si la commande ne marche pas : il faut peut être installer, sur le serveur Ansible, ssh et ssh_pass pour permettre à Ansible de
     fonctionner<br>
     <br>
-    Bon le ssh avec un mots de passe il parait que c'est pas assez sécurisé. Donc on va passé par un jeux de clé publique.
+    Le ssh avec un mot de passe, il parait que c'est pas assez sécurisé. Donc on va passer par un jeux de clé publique.
     Génération de clé avec la commande ssh :<br>
     <div class="code">
         ssh-keygen -t ecdsa
@@ -40,16 +40,16 @@
     <div class="code">
         ansible -i inventaire.ini  -m authorized_key -a 'user=tux state=present key="&#123&#123lookup("file", "/home/tux/.ssh/id_ecdsa.pub") &#125&#125"' --user tux --ask-pass --become --ask-become-pass all
     </div>
-    Maintenant, il faut configurer les roles et les appliqué aux bon serveurs.<br>
+    Maintenant, il faut configurer les rôles et les appliquer aux bons serveurs.<br>
     <br>
-    Un rôle est une serie d'intruction pour arriver à faire une choses : par exemple installer apache.<br>
-    Ce role peut être repris plusieur fois si on dois par exemple installer apache sur plusieur machine<br>
-    On va mettre les rôles dans un repertoire roles.(dossier par defaut de ansbile)<br>
-    Une fois dans le dossier roles on peut initier une arborescence avec la commande : <br>
+    Un rôle est une série d'instructions pour arriver à faire une chose : par exemple installer apache.<br>
+    Ce rôle peut être repris plusieurs fois si on dois, par exemple, installer apache sur plusieurs machines<br>
+    On va mettre les rôles dans un répertoire roles (sans l'accent), c'est le dossier par défaut de Ansible<br>
+    Une fois dans le dossier roles, on peut initier une arborescence avec la commande : <br>
     <div class="code">
         ansible-galaxy init nom_du_role
     </div>
-    exemple de repertoire :<br>
+    Exemple de répertoire :<br>
     <br>
     roles<br>
     ├── apache<br>
@@ -62,11 +62,11 @@
     │   └── tasks<br>
     │       └── main.yml<br>
     <br>
-    Ici on a 2 rôles apache et mariadb. Mairiadb est le rôle le plus simple : il n y a que des taches (tasks).<br>
-    Apache est plus complexe avec une tache principale main.yml et une autre as inclure php-install.yml.<br>
-    Dans le dossier apache on peut aussi voir un dossier handler qui gere le redemarrage de apache en cas de changement.<br>
+    Ici on a 2 rôles : apache et mariadb. Mariadb est le rôle le plus simple : il n´y a que des tâches (tasks).<br>
+    Apache est plus complexe avec une tâche principale main.yml et une autre as inclure php-install.yml.<br>
+    Dans le dossier apache, on peut aussi voir un dossier handler qui gère le redémarrage d'apache en cas de changement.<br>
     <br>
-    exemple de fichier role:<br>
+    Exemple de fichier role:<br>
     <div class="code">
         ---<br>
         <br>
@@ -89,16 +89,16 @@
     &ensp;  when: php_install|default(False)|bool<br>
     </div>
     <br>
-    L'indexation est important comme en python.<br>
-    L'indexation se fait avec 2 expaces.<br>
+    L'indexation est importante comme en python.<br>
+    L'indexation se fait avec 2 espaces.<br>
     Le fichier débute par ---.<br>
     <br>
     Nous avons donc :<br>
-    Des machine dans inventaire.ini<br>
-    Différents roles dans le dossier roles<br>
+    Des machines dans inventaire.ini<br>
+    Différents rôles dans le dossier roles<br>
     <br>
-    Il reste plus qu'à associer les roles et les machines.<br>
-    C'est le boulot du fichier playbook de ansible.<br>
+    Il reste plus qu'à associer les rôles et les machines.<br>
+    C'est le boulot du fichier playbook d'Ansible.<br>
     fichier playbook Install_apache.yml:<br>
     <div class="code">
         ---<br>
@@ -107,10 +107,10 @@
         &ensp; role: "apache"
         &ensp; php_install:yes
     </div>
-    On nomme l'opération avec name puis on definie l'operation (attention: indexation 2 espaces).<br>
-    La sous-section host indique les machines sur lesquels appliqué le role.<br>
-    La sous-section role indique le role à appliquer.<br>
-    Le php_install est une variable utilisée par le role pour savoir si on veux installer php.<br>
+    On nomme l'opération avec name, puis on définie l'opération (Attention: indexation 2 espaces).<br>
+    La sous-section host indique les machines sur lesquelles appliquer le rôle.<br>
+    La sous-section role indique le rôle à appliquer.<br>
+    Le php_install est une variable utilisée par le rôle pour savoir si on veut installer php.<br>
     <br>
     Maintenant la commande pour lancer le tout :
     <div class="code">
@@ -122,6 +122,6 @@
     --become _ask-become_pass : on passe "en root" avec sudo et on demande le mot de passe<br>
     install-apache.yml : le nom du playbook<br>
     <br>
-    Normalement les machines devraient executer les ordres de ansibles.
+    Normalement les machines devraient exécuter les ordres de Ansible.
 </p>
 {% endblock %}

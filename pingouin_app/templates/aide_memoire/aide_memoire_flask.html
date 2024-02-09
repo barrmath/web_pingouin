@@ -6,24 +6,24 @@
     <p>
         Flask permet à python de générer des pages web.<br>
         Il est recommandé d'utiliser une appproche MVC (Model,View,Control)<br>
-        En général une application est composé de plusieur fichier et dosssier.<br>
+        En général une application est composée de plusieurs fichiers et dosssiers.<br>
         <img src={{ url_for('static', filename='img/aide_memoire_flask/arbo_flask.png') }}/><br>
-        Dans l'arborescence vous apercever un dossier fonction et un notebook qui ne participe pas à Flask.<br>
+        Dans l'arborescence, vous apercevez un dossier fonction et un notebook qui ne participe pas à Flask.<br>
         <br>
         Fichier à la racine :<br>
         Le fichier run.py : permet de lancer l'application.<br>
-        Le fichier config.py permet de faire la configuration de Flask et éventuellement de sa Base De Donnée(BDD)<br>
-        Le ficiher .env pour des variables d'environnement (genre des clé secrete ou des user/password)<br>
-        Un dossier pour l application ici pingouin_app<br>
+        Le fichier config.py permet de faire la configuration de Flask et éventuellement de sa Base De Donnée (BDD)<br>
+        Le fichier .env pour des variables d'environnement (genre des clé secrètes ou des user/password)<br>
+        Un dossier pour l'application pingouin_app<br>
         Un dossier venv pour l'environnement virtuel<br>
         <br>
-        Les dossiers et fichier de l'application :<br>
+        Les dossiers et fichiers de l'application :<br>
         __ini__.py : fichier python pour initialiser un module.<br>
-        views.py : permet de gerer les routes/vue<br>
-        form.py : ici il s'agit de faire un model pour un formulaire. Vous pouvez trouvé un models.py pour une BDD<br>
-        util.py : en general je mets mes fonctions perso<br>
+        views.py : permet de gérer les routes/vue<br>
+        form.py : ici il s'agit de faire un modéle pour un formulaire. Vous pouvez trouver un models.py pour une BDD<br>
+        util.py : en général, je mets mes fonctions perso à l'intérieur<br>
         <br>
-        Le dossier static : permet de stoquer des fichier statique (image, feuille de style)<br>
+        Le dossier static : permet de stocker des fichiers statiques (image, feuille de style)<br>
         Le dossier templates stocke les pages html<br>
         <br>
         Allons parlons un peu de code :
@@ -33,9 +33,9 @@
             if __name__ == "__main__":<br>
             <BLOCKQUOTE>app.run(debug=True)</BLOCKQUOTE><br>
         </div>
-        Le fichier sert juste à lancer un serveur local avec la commande python run.py avec l'adresse par defaut.<br>
-        Attention il s'agit d'un server de test de code. Il ne doit pas servir pour lancer un vrai server web. utiliser par exemple Gunicorn pour cela.<br>
-        Remarqué que le mode debug est activé sur ce serveur local. si vous lancer l'application avec gunicorn, il lancera le site avec debug=False.<br>
+        Le fichier sert juste à lancer un serveur local avec la commande python run.py avec l'adresse par défaut.<br>
+        Attention il s'agit d'un server de test de code. Il ne doit pas servir pour lancer un vrai server web. Utilisez, par exemple, Gunicorn pour cela.<br>
+        Remarquez que le mode debug est activé sur ce serveur local. Si vous lancez l'application avec gunicorn, il lancera le site avec debug=False.<br>
         <br>
         <br>
         views.py<br>
@@ -45,7 +45,7 @@
             <br>
             app = Flask(__name__)<br>
             <br>
-            #si bessoin ajouter les bibliotheque ici<br>
+            #si besoin ajouter les bibliothèques ici<br>
             app.config.from_object('config')<br>
             from .form import Form_ia_pingouin<br>
             from .util import ia_result<br>
@@ -57,8 +57,8 @@
             <BLOCKQUOTE>return render_template('index.html')</BLOCKQUOTE><br>
         </div>
         Ce fichier permet de définir les routes avec un décorateur.<br>
-        Vous pouvez envoiyé des données dans la page en rajoutant un nom dans render template.<br>
-        exemple :
+        Vous pouvez envoiyer des données dans la page en rajoutant un nom dans render_template.<br>
+        Exemple :
         <div class="code">render_template('index.html',ma_variable=ma_variable)</div>
         <br>
         <br>

@@ -7,7 +7,7 @@
     <h1>Aide Mémoire terraform</h1>
     <p>
         Prérequis : <br>
-        On considere que le provider CLI est déjà configuré avec un ID et le reste de la sécurité.<br>
+        On considère que le provider CLI est déjà configuré avec un ID et le reste de la sécurité.<br>
         <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html">Amazon CLI</a><br>
         <a href="https://cloud.google.com/sdk/docs/install?hl=fr">google cloud</a><br>
         <br>
@@ -29,10 +29,10 @@
             }<br>
         </div>
         <br>
-        On pourras acceder à ces variable avec l'objet var. par exemple var.region.<br>
+        On pourra accèder à ces variables avec l'objet var. Exemple var.region.<br>
         <br>
         On crée un fichier main.tf avec les ressources nécéssaires : <br>
-        par exemple : <br>
+        Exemple : <br>
         <div class="code">
             terraform {<br>
                 &ensp;    required_providers {<br>
@@ -59,45 +59,45 @@
                 output var.region
               }<br>
         </div>              
-        On décrie ici le provider aws  avec l'AMI que l'on veux, la region et le type d'instance. <br>
+        On décrit ici le provider aws  avec l'AMI que l'on veux, la région et le type d'instance. <br>
         <br>
-        Si besoin la commmande output peux vous servir à faire sortir une variable (comme print ou echo).<br>
+        Si besoin la commande output peut vous servir à faire sortir une variable (comme print ou echo).<br>
         <br>
         On initialise terraform avec la commande : <br>
         <div class="code">
             terraform init
         </div>
         <br>
-        On peux ensuite faire un controle du code avec la commande validate:<br>
+        On peut ensuite faire un contrôle du code avec la commande validate:<br>
         <div class="code">
             terraform validate
         </div>
         <br>
-        On peux voir une preversion de l ínfra avec la commande plan :<br>
+        On peux voir une préversion de l'ínfra avec la commande plan :<br>
         <div class="code">
             terraform plan
         </div>
         <br>
-        On peux ensuite appliqué (avec cet exemple sur aws) :<br>
+        On peut ensuite appliquer (avec cet exemple sur aws) :<br>
         <div class="code">
             terraform apply
         </div>
         <br>
-        On peux detruire ces instances avec la commande : <br>
+        On peut détruire ces instances avec la commande : <br>
         <div class="code">
             terraform destroy
         </div>
         <br>
         Pour mieux diviser son code vous pouvez par exemple mettre les providers dans un fichier providers.tf .<br>
         On peux créer aussi un fichier prod.tfvars pour y mettre les variables. Un peu comme un .env en python.<br>
-        exemple : <br>
+        Exemple : <br>
         <div class="code">
             ma_variable = "machainedecaractere"
         </div>
         Si vous y mettez des données sensibles, evitez de partager le code. Ajouter le fichier au .gitignore .<br>
-        terraform output vous permets de recupérer vos outputs.<br>
-        l'option -raw permets d'enlevé les guillemets.<br>
-        l'option -json permets de faire un format json<br>
+        terraform output vous permet de recupérer vos outputs.<br>
+        L'option -raw permet d'enlever les guillemets.<br>
+        L'option -json permet de faire un format json<br>
         <div class="code">
             terraform output -raw<br>
             terraform output -json<br>
