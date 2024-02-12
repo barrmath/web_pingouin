@@ -16,9 +16,9 @@
         <li>Utiliser l'IA</li>
     </ol>
     Vous pouvez trouver des données un peu partout. par exemple le site: <a href="https://www.data.gouv.fr/fr/">
-    data.gouv.</a> fournie des données de différents corps d'état francais <br>
-Le site <a href="https://www.kaggle.com/">kaggle</a> peux vous fournir des datasets pour du Machine Learning.
-    Ici, nous allons utiliser un datataset fournie par seaborn : le dataset pingouin.
+    data.gouv.</a> fournit des données de différents corps d'état francais <br>
+Le site <a href="https://www.kaggle.com/">kaggle</a> peut vous fournir des datasets pour du Machine Learning.
+    Ici, nous allons utiliser un datataset fourni par seaborn : le dataset pingouin.
     <h2>Présentation du dataset pingouin</h2>
     <br>
     Ce dataset est contenu dans la bibliothèque <a href="https://seaborn.pydata.org/">Seaborn</a> pour python.
@@ -75,7 +75,7 @@ Le site <a href="https://www.kaggle.com/">kaggle</a> peux vous fournir des datas
     Pour faire les IA, j'ai utilisé la bibliothèque <a href="https://scikit-learn.org/stable/">scikit-learn</a>.<br>
     Les IA doivent recevoir des données ayant certaines caractéristiques:<br>
     <ul>
-        <li>Avoir une caractéristique ou dimension par colonnes (par exemple le poids dans une colonne)</li>
+        <li>Avoir une caractéristique ou dimension par colonne (par exemple le poids dans une colonne)</li>
         <li>Un individu ou exemple par ligne (ici un pingouin par ligne)</li>
         <li>Que des chiffres à regarder (on remplace par exemple male par 0 et femelle par 1)</li>
         <li>pas de valeur manquante ou NaN</li>
@@ -102,34 +102,34 @@ Le site <a href="https://www.kaggle.com/">kaggle</a> peux vous fournir des datas
     Vous pouvez dire par exemple que vous voyez deux groupes que vous pouvez séparer par une ligne.<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/specie_no_hue_scatterplot_2.jpg') }}><br>
     Ce que représentent ces groupes ? Vous ne savez pas. Il faut analyser un peu plus et souvent par un humain<br>
-    Vous avez créer ces 2 groupes sans savoir si un point est dans un groupe ou non.<br>
+    Vous avez créé ces 2 groupes sans savoir si un point est dans un groupe ou non.<br>
     Il s'agit d'un entrainment non supervisé.<br>
     <br>
     Allez plus dur ce graphe là :<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/specie_no_hue_scatterplot_3.jpg') }}><br>
-    Bon avouons-le, on ne peut pas classer ce nuage de points. L'IA non supervisée a de forte chance de ne
+    Bon, avouons-le, on ne peut pas classer ce nuage de points. L'IA non supervisée a de fortes chances de ne
     pas passer les tests.<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/specie_hue_scatterplot_1.jpg') }}><br>
-    Avec des couleurs ça va mieux. On va pouvoir classer ces pingouins avec ses données. Je connais déjà les groupes.
+    Avec des couleurs ça va mieux. On va pouvoir classer ces pingouins avec ces données. Je connais déjà les groupes.
     Il s'agit d'un entrainement supervisé.<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/specie_hue_scatterplot_2.jpg') }}><br>
     Et voilà.<br>
-    MAIS ce n'est pas parfait, on voit des pingouins dans les mauvais groupes.<br>
+    Mais ce n'est pas parfait; on voit des pingouins dans les mauvais groupes.<br>
     Et oui, une IA ne sera que rarement parfaite. Elle aura toujours une probabilité de se tromper.<br>
     <br>
     <br>
-    Nous avons donc vu qu'une IA a besoin de données, que certaines IA sont spécialisé dans un problème,
-    mais aussi que leur entrainment joue sur leurs performances.<br>
+    Nous avons donc vu qu'une IA a besoin de données, que certaines IA sont spécialisées dans un problème,
+    mais aussi que leur entrainement joue sur leurs performances.<br>
     <br>
-    Je ne l'ai pas encore dit, mais le jeu de donnée à des pingouins dont on ne connait par le sexe.<br>
-    Essayons de faire une IA qui determine le sexe des pingouins.<br>
+    Je ne l'ai pas encore dit, mais le jeu de données a des pingouins dont on ne connait par le sexe.<br>
+    Essayons de faire une IA qui détermine le sexe des pingouins.<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/pairplot.jpg') }} ><br>
-    On a pas de nuage de point qui determine un groupe male et femelle. C'est ici que l'on pourra voir la
+    On n'a pas de nuage de point qui determine un groupe male et femelle. C'est ici que l'on pourra voir la
     puissance des IA.<br>
-    En effet, je vous ai montré des nuages de points en 2D. Mais une IA peut voir des nuages de points en X dimension.
-    C'est un peu dur à comprendre. Mais il existe une <a href="https://www.youtube.com/watch?v=LQFkUjYzOn8">video</a>
+    En effet, je vous ai montré des nuages de points en 2D. Mais une IA peut voir des nuages de points en X dimensions.
+    C'est un peu dur à comprendre. Mais il existe une <a href="https://www.youtube.com/watch?v=LQFkUjYzOn8">vidéo</a>
     qui vous le fera comprendre.<br>
-    Pour l'instant, dites-vous que l'IA possède une sorte de don qui lui permette
+    Pour l'instant, dites-vous que l'IA possède une sorte de don qui lui permet
     de voir dans plusieurs dimensions en même temps.<br>
     <h2>Entrainement et test</h2>
     La méthode Kmeans :<br>
@@ -140,7 +140,7 @@ Le site <a href="https://www.kaggle.com/">kaggle</a> peux vous fournir des datas
         model_KMeans.fit(data_train)<br>
     </div>
     <br>
-    Pour tester cette IA, on va donc comparer les résultats avec le jeu de test grâce à une matrice de confusion.<br>
+    Pour tester cette IA, on va donc comparer les résultats avec le jeu de tests grâce à une matrice de confusion.<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/matrice_kmeans.jpg') }}><br>
     Petite explication : On va comparer les valeurs de test avec les valeurs prédites par l'IA.<br>
     On a donc pour le Kmeans :<br>
@@ -151,23 +151,23 @@ Le site <a href="https://www.kaggle.com/">kaggle</a> peux vous fournir des datas
         <li>en bas à droite les valeurs 1 bien prédites </li>
     </ul>
     <br>
-    La methode de Regression logistique :<br>
+    La méthode de régression logistique :<br>
     <div class="code">
         # création du model
         model_reg_logis = LogisticRegression(max_iter=max_iter)
         # entrainement
         model_reg_logis.fit(data_train, target_train)
     </div>
-    Les plus observateur ont remarqué que le Kmeans avait que les data_train d'entrainement et que la regression
+    Les plus observateurs ont remarqué que le Kmeans n'avait que les data_train d'entrainement et que la régression
     logistique avait les résultats aussi.<br>
-    On vois la différence entre l'entrainement supervisé ou non.<br>
-    Bon observons la matrice de confusion :<br>
+    On voit la différence entre l'entrainement supervisé ou non.<br>
+    Observons la matrice de confusion :<br>
     <img src={{ url_for('static', filename='/img/description_ia_pingouin/matrice_reg_log.jpg') }}><br>
 
     Une bonne IA va donc avoir un maximun en haut à gauche et en bas à droite.<br>
     Pour aller plus loin, je vous propose d'aller voir cette 
     <a href="https://learn.microsoft.com/fr-fr/azure/machine-learning/how-to-understand-automated-ml?view=azureml-api-2">page</a>.<br>
-    Le choix entre les 2 IA est simple ici, les résultats sont en faveur de la regression logistique.<br><br>
+    Le choix entre les 2 IA est simple ici, les résultats sont en faveur de la régression logistique.<br><br>
     Pour résumer une IA doit être bien entrainée avec une bonne base de données et il faut la tester. Et même ainsi,
     elle peut encore se tromper.<br>
 </p>
