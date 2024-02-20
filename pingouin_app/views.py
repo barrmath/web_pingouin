@@ -77,6 +77,11 @@ def aide_memoire():
     return render_template("aide_memoire/aide_memoire.html")
 
 
+@app.route("/gcloud/", methods=["GET", "POST"])
+def gcloud():
+    return render_template("aide_memoire/aide_memoire_gcloud.html")
+
+
 @app.route("/git/", methods=["GET", "POST"])
 def git():
     return render_template("aide_memoire/aide_memoire_git.html")

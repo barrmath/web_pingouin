@@ -41,6 +41,11 @@ def test_aide_memoire_get_status_codeOK(client):
     assert response.status_code == 200
 
 
+def test_gcloud_get_status_codeOK(client):
+    response = client.get("/gcloud/")
+    assert response.status_code == 200
+
+
 def test_git_get_status_codeOK(client):
     response = client.get("/git/")
     assert response.status_code == 200
@@ -119,6 +124,11 @@ def test_python_graph_post_status_codeOK(client):
 
 def test_aide_memoire_post_status_codeOK(client):
     response = client.post("/aide_memoire/")
+    assert response.status_code == 200
+
+
+def test_gcloud_post_status_codeOK(client):
+    response = client.post("/gcloud/")
     assert response.status_code == 200
 
 
